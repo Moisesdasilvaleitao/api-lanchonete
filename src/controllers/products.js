@@ -15,6 +15,31 @@ async function get (req, res) {
 
 }
 
+async function post (req, res) {
+    const {
+        lanche,
+        ingredientes,
+        preço,
+    } = req.body
+
+    const products = new ProductsModel ({
+        lanche,
+        ingredientes,
+        preço,
+    })
+
+    products.save()
+
+    res.send({
+        message: "ok"
+    })
+    
+}
+
+
+
+
 module.exports = {
-    get
+    get,
+    post,
 }
